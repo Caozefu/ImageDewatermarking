@@ -21,13 +21,33 @@ function getResultImgUrl(img) {
                 b = c.data[x + 2],
                 a = c.data[x + 3];
 
+            if (a !== 0) {
+                r = 255;
+                g = 255;
+                b = 255;
+            }
+
             colorList.push({
                 r, g, b, a
             })
         }
     }
-    ctx.putImageData(c, 0, 0, 0, 0, 256, 256);    //裁剪效果见图1
-    console.log(canvas.toDataURL());
+    console.log(colorList);
+    let res = [];
+    // for (let i = 0; i < colorList.length * 4; i ++) {
+    //     res.
+    // }
+    colorList.forEach(item => {
+        res.push(item.r);
+        res.push(item.g);
+        res.push(item.b);
+        res.push(item.a);
+    });
+    for (let i = 0; i < res.length; i ++) {
+        c.data[i] = res[i];
+    }
+    console.log(c);
+    ctx.putImageData(c, 0, 0, 0, 0, 256, 256);
     document.getElementById('btn').href = canvas.toDataURL();
 }
 
