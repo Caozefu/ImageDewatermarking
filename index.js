@@ -1,4 +1,5 @@
 function getResultImgUrl(img) {
+    debugger
     var canvas = document.getElementById("canvas");
     canvas.width = img.width;
     canvas.height = img.height;
